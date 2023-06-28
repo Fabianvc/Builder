@@ -5,22 +5,36 @@ import PackageDescription
 let package = Package(
     name: "Builder",
     platforms: [
-        .iOS(.v14)
+        .iOS(.v14),
     ],
     products: [
         .library(
             name: "Builder",
-            targets: ["Builder"]),
+            targets: [
+                "BuilderCommon",
+                "BuilderProviders"
+            ]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/hmlongco/Resolver.git", from: "1.4.1"),
-    ],
+    dependencies: [],
     targets: [
+
         .target(
-            name: "Builder",
+            name: "BuilderCommon",
+            dependencies: [],
+            path: "Sources/Common"),
+
+        .target(
+            name: "BuilderProviders",
             dependencies: [
-                "Resolver",
+                "BuilderCommon"
             ],
-            path: "Sources"),
+            path: "Sources/Providers"),
+
+        .testTarget(
+            name: "BuilderCommonTests",
+            dependencies: [
+                "BuilderCommon"
+            ],
+            path: "Tests/CommonTests")
     ]
 )
