@@ -3,13 +3,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "Builder",
+    name: "BuilderiOS",
     platforms: [
         .iOS(.v14),
     ],
     products: [
         .library(
-            name: "Builder",
+            name: "BuilderiOS",
             targets: [
                 "BuilderCommon",
                 "BuilderProviders"
